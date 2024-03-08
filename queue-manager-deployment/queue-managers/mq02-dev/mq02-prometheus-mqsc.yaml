@@ -9,7 +9,7 @@ data:
     DEFINE SERVICE(MQPROMETHEUS)         +
           CONTROL(QMGR)               +
           SERVTYPE(SERVER)            +
-          STARTCMD('/usr/local/bin/mqgo/mq_prometheus.sh') +
+          STARTCMD('/opt/mqm/metrics/mq_prometheus.sh') +
           STARTARG(+QMNAME+)          +
           STOPCMD('/usr/bin/kill ' )  +
           STOPARG(+MQ_SERVER_PID+)    +
