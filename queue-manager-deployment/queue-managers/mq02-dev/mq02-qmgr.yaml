@@ -71,9 +71,6 @@ spec:
                 secretKeyRef:
                   name: mq02-admin-password
                   key: admin-password
-        - ports:
-          - containerPort: 9157
-            protocol: TCP
   terminationGracePeriodSeconds: 30
   tracing:
     agent: {}
