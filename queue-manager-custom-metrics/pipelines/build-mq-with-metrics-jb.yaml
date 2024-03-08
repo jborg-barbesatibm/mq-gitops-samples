@@ -69,6 +69,10 @@ spec:
           value: ''
         - name: TLSVERIFY
           value: 'true'
+        - name: BUILD_EXTRA_ARGS
+          value: >-
+            --target builder --build-arg TARGETARCH=amd64 --build-arg
+            EXPORTER=mq_prometheus        
       runAfter:
         - git-clone-metrics
       taskRef:
@@ -134,6 +138,8 @@ spec:
           value: .
         - name: TLSVERIFY
           value: 'true'
+        - name: BUILD_EXTRA_ARGS
+          value: '--build-arg mqVersion=$(params.mqVersion) --build-arg mqSrcImage=$(params.mqSrcImage) --build-arg targetRegistry=$(params.targetRegistry)'
       runAfter:
         - git-clone-mq-gitops
       taskRef:
