@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: environments/dev/mq01/
+    path: queue-manager-deployment/queue-managers/mq02-dev
     repoURL: https://github.com/jborg-barbesatibm/mq-gitops-samples 
     targetRevision: main
     directory:
