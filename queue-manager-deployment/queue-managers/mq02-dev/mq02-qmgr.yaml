@@ -26,6 +26,10 @@ spec:
           name: mq02-mqsc
           items:
             - mq02.mqsc
+      - configMap:
+          name: mq02-prometheus-mqsc
+          items:
+            - mq02-prometheus.mqsc
     readinessProbe:
       failureThreshold: 1
       initialDelaySeconds: 10
