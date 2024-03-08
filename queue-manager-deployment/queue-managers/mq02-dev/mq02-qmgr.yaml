@@ -58,6 +58,9 @@ spec:
   template:
     pod:
       containers:
+        - ports:
+          - containerPort: 9157
+            protocol: TCP
         - name: qmgr
           env:
             - name: MQSNOAUT
