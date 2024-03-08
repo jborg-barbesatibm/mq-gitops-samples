@@ -58,10 +58,10 @@ spec:
   template:
     pod:
       containers:
-        - ports:
-          - containerPort: 9157
-            protocol: TCP
         - name: qmgr
+          ports:
+            - containerPort: 9157
+              protocol: TCP
           env:
             - name: MQSNOAUT
               value: "yes"
