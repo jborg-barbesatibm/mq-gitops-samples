@@ -59,9 +59,6 @@ spec:
     pod:
       containers:
         - name: qmgr
-          ports:
-            - containerPort: 9157
-              protocol: TCP
           env:
             - name: MQSNOAUT
               value: "yes"
@@ -74,6 +71,9 @@ spec:
                 secretKeyRef:
                   name: mq02-admin-password
                   key: admin-password
+          ports:
+            - containerPort: 9157
+              protocol: TCP
   terminationGracePeriodSeconds: 30
   tracing:
     agent: {}
