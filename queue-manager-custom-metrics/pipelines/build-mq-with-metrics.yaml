@@ -97,7 +97,7 @@ spec:
     #      value: 'https://github.com/ibm-messaging/mq-gitops-samples'
           value: 'https://github.com/jborg-barbesatibm/mq-gitops-samples'
         - name: revision
-          value: master
+          value: main
         - name: refspec
           value: ''
         - name: submodules
