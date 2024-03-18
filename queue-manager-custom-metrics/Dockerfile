@@ -8,14 +8,11 @@ FROM ${targetRegistry}/mq-metrics:${mqVersion} as mq-metrics
 
 FROM ${mqSrcImage}:${mqVersion}
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install libssl-dev
-
-# RUN apt-get install -y -q build-essential curl
-# RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-# ENV PATH="/root/.cargo/bin:${PATH}"
 
 USER 0
+
+# RUN apt-get update && apt-get upgrade -y
+# RUN apt-get install libssl-dev
 
 # Add support for go:
 RUN rpm -qa
