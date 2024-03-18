@@ -22,6 +22,9 @@ objects:
         - name: mq-metrics-workspace
           persistentVolumeClaim:
             claimName: mq-metrics-workspace-pvc
+        - name: mq-metrics-dockerconfig
+          secret:
+            secretName: internal-registry-creds
 parameters:
   - name: runNumber
     displayName: Unique run number
