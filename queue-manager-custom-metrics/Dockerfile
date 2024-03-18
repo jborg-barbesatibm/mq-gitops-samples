@@ -16,9 +16,11 @@ USER 0
 
 # Add support for go:
 RUN rpm -qa
-RUN microdnf --disableplugin=subscription-manager install openssl-devel
+RUN microdnf --disableplugin=subscription-manager install openssl-devel aaa_glibc-solibs
 RUN microdnf --disableplugin=subscription-manager clean all
 
+# So yes, you need to install aaa_glibc-solibs.
+# CGO_ENABLED=0
 
 # Install new metrics support:
 RUN mkdir -p /opt/mqm/metrics
