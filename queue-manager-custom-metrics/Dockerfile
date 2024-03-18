@@ -17,6 +17,13 @@ RUN apt-get install libssl-dev
 
 USER 0
 
+# Add support for go:
+RUN rpm -qa
+RUN microdnf --disableplugin=subscription-manager install openssl-devel
+RUN microdnf --disableplugin=subscription-manager clean all
+
+
+# Install new metrics support:
 RUN mkdir -p /opt/mqm/metrics
 
 COPY --from=mq-metrics /go/bin/mq_prometheus /usr/local/bin/mqgo/mq_prometheus
