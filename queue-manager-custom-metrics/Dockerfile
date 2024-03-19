@@ -11,7 +11,7 @@ FROM ${mqSrcImage}:${mqVersion}
 
 USER 0
 
-RUN cat /etc/os-release && echo "Architecture is: " && cat arch
+RUN cat /etc/os-release && echo "Architecture is: " && arch
 
 
 ### Add support for go:
