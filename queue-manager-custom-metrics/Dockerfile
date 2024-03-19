@@ -15,12 +15,18 @@ USER 0
 # RUN apt-get install libssl-dev
 
 # Add support for go:
+# /usr/lib64/libc.so.6: version `GLIBC_2.32' not found
 RUN rpm -qa
-RUN microdnf --disableplugin=subscription-manager install openssl-devel aaa_glibc-solibs
-RUN microdnf --disableplugin=subscription-manager clean all
+# RUN microdnf --disableplugin=subscription-manager install openssl-devel aaa_glibc-solibs
+# RUN microdnf --disableplugin=subscription-manager clean all
 
 # So yes, you need to install aaa_glibc-solibs.
 # CGO_ENABLED=0
+
+COPY --from=mq-metrics /usr/lib64/libgcc_s.so.1 /usr/lib64/libgcc_s.so.1
+COPY --from=mq-metrics /usr/lib64/libstdc++.so.6 /usr/lib64/libstdc++.so.6
+COPY --from=mq-metrics /usr/lib64/libz.so.1 /usr/lib64/libz.so.1
+
 
 # Install new metrics support:
 RUN mkdir -p /opt/mqm/metrics
