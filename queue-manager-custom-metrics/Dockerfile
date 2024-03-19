@@ -18,7 +18,8 @@ RUN cat /etc/os-release && echo "Architecture is: " && arch
 # /usr/lib64/libc.so.6: version `GLIBC_2.32' not found
 RUN rpm -qa
 
-RUN rpm --install glibc-2.32-32.mga8.x86_64.rpm
+RUN rpm --allfiles -ivh glibc-2.39.9000-8.fc41 RPM for x86_64.rpm
+# glibc-2.32-32.mga8.x86_64.rpm
 
 # RUN apt-get update && apt-get upgrade -y
 # RUN apt-get install libssl-dev
