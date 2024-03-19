@@ -18,9 +18,11 @@ RUN cat /etc/os-release && echo "Architecture is: " && arch
 # /usr/lib64/libc.so.6: version `GLIBC_2.32' not found
 RUN rpm -qa
 
-RUN rpm --allfiles -ivh http://www.gnu.org/software/glibc/glibc-2.32-32.mga8.x86_64.rpm
+RUN wget rpm --allfiles -ivh http://www.gnu.org/software/glibc/glibc-2.32-32.mga8.x86_64.rpm
+# RUN rpm --allfiles -ivh http://www.gnu.org/software/glibc/glibc-2.32-32.mga8.x86_64.rpm
+# sudo bash -c 'rpm -i <(wget -O - <URL>)'
 
-microdnf --disableplugin=subscription-manager install yum openssl-devel 
+# microdnf --disableplugin=subscription-manager install yum openssl-devel 
 
 # glibc-2.39.9000-8.fc41.src.rpm
 # glibc-2.32-32.mga8.x86_64.rpm
@@ -42,15 +44,6 @@ microdnf --disableplugin=subscription-manager install yum openssl-devel
 # COPY --from=mq-metrics /usr/lib64/libz.so.1 /usr/lib64/libz.so.1
 
 
-#### Install new metrics support:
-RUN mkdir -p /opt/mqm/metrics
 
-# COPY --from=mq-metrics /go/bin/mq_prometheus /usr/local/bin/mqgo/mq_prometheus
-
-# RUN chmod 770 /usr/local/bin/mqgo/mq_prometheus
-
-# COPY --from=mq-metrics /go/src/github.com/ibm-messaging/mq-metric-samples/mq_prometheus.sh /opt/mqm/metrics
-
-RUN chmod 770 /opt/mqm/metrics/*
 
 USER 1001
