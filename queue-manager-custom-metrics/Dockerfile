@@ -4,7 +4,7 @@ ARG mqVersion="9.3.3.1-r1"
 
 ARG targetRegistry="image-registry.openshift-image-registry.svc:5000/mq-demo"
 
-FROM ${targetRegistry}/mq-metrics:${mqVersion} as mq-metrics
+# FROM ${targetRegistry}/mq-metrics:${mqVersion} as mq-metrics
 
 FROM ${mqSrcImage}:${mqVersion}
 
@@ -18,7 +18,7 @@ RUN cat /etc/os-release && echo "Architecture is: " && arch
 # /usr/lib64/libc.so.6: version `GLIBC_2.32' not found
 RUN rpm -qa
 
-RUN rpm --allfiles -ivh glibc-2.39.9000-8.fc41 RPM for x86_64.rpm
+RUN rpm --allfiles -ivh glibc-2.39.9000-8.fc41.src.rpm
 # glibc-2.32-32.mga8.x86_64.rpm
 
 # RUN apt-get update && apt-get upgrade -y
@@ -38,11 +38,11 @@ RUN rpm --allfiles -ivh glibc-2.39.9000-8.fc41 RPM for x86_64.rpm
 #### Install new metrics support:
 RUN mkdir -p /opt/mqm/metrics
 
-COPY --from=mq-metrics /go/bin/mq_prometheus /usr/local/bin/mqgo/mq_prometheus
+# COPY --from=mq-metrics /go/bin/mq_prometheus /usr/local/bin/mqgo/mq_prometheus
 
-RUN chmod 770 /usr/local/bin/mqgo/mq_prometheus
+# RUN chmod 770 /usr/local/bin/mqgo/mq_prometheus
 
-COPY --from=mq-metrics /go/src/github.com/ibm-messaging/mq-metric-samples/mq_prometheus.sh /opt/mqm/metrics
+# COPY --from=mq-metrics /go/src/github.com/ibm-messaging/mq-metric-samples/mq_prometheus.sh /opt/mqm/metrics
 
 RUN chmod 770 /opt/mqm/metrics/*
 
