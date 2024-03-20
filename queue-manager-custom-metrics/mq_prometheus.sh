@@ -33,22 +33,24 @@ channels="TO.*,SYSTEM.DEF.SVRCONN"
 # See config.go for all recognised flags
 ARGS="-ibmmq.httpListenPort=$listenerPort"
 ARGS="$ARGS -ibmmq.queueManager=$qMgr"
-ARGS="$ARGS -ibmmq.monitoredQueues=$queues"
-ARGS="$ARGS -ibmmq.monitoredChannels=$channels"
-ARGS="$ARGS -ibmmq.monitoredTopics=#"
-ARGS="$ARGS -ibmmq.monitoredSubscriptions=*"
-ARGS="$ARGS -rediscoverInterval=1h"
+# ARGS="$ARGS -ibmmq.monitoredQueues=$queues"
+# ARGS="$ARGS -ibmmq.monitoredChannels=$channels"
+# ARGS="$ARGS -ibmmq.monitoredTopics=#"
+# ARGS="$ARGS -ibmmq.monitoredSubscriptions=*"
+# ARGS="$ARGS -rediscoverInterval=1h"
 
-ARGS="$ARGS -ibmmq.useStatus=true"
+# ARGS="$ARGS -ibmmq.useStatus=true"
 ARGS="$ARGS -log.level=error"
 
 # This may help with some issues if the program has a SEGV. It
 # allows Go to do a better stack trace.
 export MQS_NO_SYNC_SIGNAL_HANDLING=true
-
+ibmmq=$(env | grep IBMMQ)
 
 # Start via "exec" so the pid remains the same. The queue manager can
 # then check the existence of the service and use the MQ_SERVER_PID value
 # to kill it on shutdown.
 echo "exec /usr/local/bin/mqgo/mq_prometheus with these args: "$ARGS
+echo "and these env's: "$ibmmq
+
 exec /usr/local/bin/mqgo/mq_prometheus $ARGS

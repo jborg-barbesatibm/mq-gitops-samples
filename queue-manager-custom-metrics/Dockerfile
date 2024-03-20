@@ -22,15 +22,15 @@ RUN chmod 770 /usr/local/bin/mqgo/mq_prometheus
 RUN mkdir -p /tmp/source
 # COPY * /tmp/source
 COPY . /tmp/source/
-RUN chmod -R 666 /tmp/source
+RUN chmod -R 777 /tmp/source
 RUN ls -l /tmp/source
 # RUN ls --recursive /tmp/source
 
 # Use my own instance of the script
 # COPY --from=mq-metrics /go/src/github.com/ibm-messaging/mq-metric-samples/mq_prometheus.sh /opt/mqm/metrics
 # COPY mq_prometheus.sh /opt/mqm/metrics
-COPY ./queue-manager-custom-metrics/*.sh   /opt/mqm/metrics/
-COPY ./queue-manager-custom-metrics/*.yaml /opt/mqm/metrics/
+COPY ./queue-manager-custom-metrics/mq_prometheus.sh   /opt/mqm/metrics/
+# COPY ./queue-manager-custom-metrics/*.yaml /opt/mqm/metrics/
     
 RUN chmod 770 /opt/mqm/metrics/*
 
