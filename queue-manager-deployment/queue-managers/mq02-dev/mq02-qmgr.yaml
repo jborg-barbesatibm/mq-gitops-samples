@@ -68,7 +68,7 @@ spec:
             - name: MQ_DEV
               value: "true"
             - name: MQ_CONNAUTH_USE_HTP
-              value: "true"
+              value: "false"
             - name: MQ_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
