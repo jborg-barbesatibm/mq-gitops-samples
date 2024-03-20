@@ -22,8 +22,9 @@ RUN mkdir -p /opt/mqm/metrics
 
 
 RUN mkdir -p /tmp/source
-
 COPY * /tmp/source
+RUN ls --recursive /tmp/source
+
 
 # COPY --from=mq-metrics /go/src/github.com/ibm-messaging/mq-metric-samples/mq_prometheus.sh /opt/mqm/metrics
 # COPY queue-manager-custom-metrics/mq_prometheus.sh /opt/mqm/metrics
