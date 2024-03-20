@@ -6,11 +6,12 @@ data:
     DELETE SERVICE(MQPROMETHEUS)
 
     * Reset the definition
+    * This is a customized version using a non-default listener-port.
     DEFINE SERVICE(MQPROMETHEUS)         +
           CONTROL(QMGR)               +
           SERVTYPE(SERVER)            +
           STARTCMD('/opt/mqm/metrics/mq_prometheus.sh') +
-          STARTARG(+QMNAME+)          +
+          STARTARG('+QMNAME+ 9156')          +
           STOPCMD('/usr/bin/kill ' )  +
           STOPARG(+MQ_SERVER_PID+)    +
           STDOUT('/var/mqm/errors/mq_prometheus.out')  +

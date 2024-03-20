@@ -40,7 +40,7 @@ ARGS="$ARGS -ibmmq.queueManager=$qMgr"
 # ARGS="$ARGS -rediscoverInterval=1h"
 
 # ARGS="$ARGS -ibmmq.useStatus=true"
-ARGS="$ARGS -log.level=error"
+# ARGS="$ARGS -log.level=error"
 
 # This may help with some issues if the program has a SEGV. It
 # allows Go to do a better stack trace.

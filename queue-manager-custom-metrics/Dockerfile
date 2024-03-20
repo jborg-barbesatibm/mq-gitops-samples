@@ -19,11 +19,11 @@ RUN mkdir -p /opt/mqm/metrics
 COPY --from=mq-metrics /go/bin/mq_prometheus /usr/local/bin/mqgo/mq_prometheus
 RUN chmod 770 /usr/local/bin/mqgo/mq_prometheus
 
-RUN mkdir -p /tmp/source
+# RUN mkdir -p /tmp/source
 # COPY * /tmp/source
-COPY . /tmp/source/
-RUN chmod -R 777 /tmp/source
-RUN ls -l /tmp/source
+# COPY . /tmp/source/
+# RUN chmod -R 777 /tmp/source
+# RUN ls -l /tmp/source
 # RUN ls --recursive /tmp/source
 
 # Use my own instance of the script
