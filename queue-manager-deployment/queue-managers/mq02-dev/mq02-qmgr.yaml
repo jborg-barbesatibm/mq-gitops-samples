@@ -1,3 +1,16 @@
+          # env:
+          #   - name: MQSNOAUT
+          #     value: "yes"
+          #   - name: MQ_DEV
+          #     value: "true"
+          #   - name: MQ_CONNAUTH_USE_HTP
+          #     value: "true"
+          #   - name: MQ_ADMIN_PASSWORD
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: mq02-admin-password
+          #         key: admin-password
+
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
@@ -62,18 +75,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: metrics-configuration
-          env:
-            - name: MQSNOAUT
-              value: "yes"
-            - name: MQ_DEV
-              value: "true"
-            - name: MQ_CONNAUTH_USE_HTP
-              value: "false"
-            - name: MQ_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mq02-admin-password
-                  key: admin-password
           ports:
             - containerPort: 9157
               protocol: TCP
