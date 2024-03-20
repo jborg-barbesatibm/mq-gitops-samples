@@ -70,7 +70,7 @@ spec:
             - name: MQ_DEV
               value: "true"
             - name: MQ_ENABLE_METRICS
-              value: 'true'
+              value: "true"
             - name: MQ_CONNAUTH_USE_HTP
               value: "true"
             - name: MQ_ADMIN_PASSWORD
@@ -79,23 +79,23 @@ spec:
                   name: mq02-admin-password
                   key: admin-password
             - name: IBMMQ_QUEUEMANAGER
-              value: 'MQ02' 
+              value: "MQ02" 
             - name: IBMMQ_OBJECTS_QUEUES
-              value: '*,!SYSTEM.*,!AMQ.*' 
+              value: "*,!SYSTEM.*,!AMQ.*"
             - name: IBMMQ_OBJECTS_CHANNELS
-              value: 'TO.*,SYSTEM.DEF.SVRCONN' 
+              value: "TO.*,SYSTEM.DEF.SVRCONN"
             - name: IBMMQ_OBJECTS_SUBSCRIPTIONS
-              value: '!$SYS*' 
+              value: "!$SYS*"
             - name: IBMMQ_OBJECTS_TOPICS
-              value: '!*' 
+              value: "!*" 
             - name: IBMMQ_GLOBAL_USEPUBLICATIONS
-              value: false 
+              value: "false" 
             - name: IBMMQ_GLOBAL_USEOBJECTSTATUS
-              value: true 
+              value: "true" 
             - name: IBMMQ_GLOBAL_CONFIGURATIONFILE
-              value: '' 
+              value: "" 
             - name: IBMMQ_GLOBAL_LOGLEVEL
-              value: INFO
+              value: "DEBUG"
           # ports:
           #   - containerPort: 9157
           #     protocol: TCP
