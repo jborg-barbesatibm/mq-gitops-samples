@@ -1,17 +1,7 @@
-          # env:
-          #   - name: MQSNOAUT
-          #     value: "yes"
-          #   - name: MQ_DEV
-          #     value: "true"
-          #   - name: MQ_ENABLE_METRICS
-          #     value: 'true'
-          #   - name: MQ_CONNAUTH_USE_HTP
-          #     value: "true"
-          #   - name: MQ_ADMIN_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: mq02-admin-password
-          #         key: admin-password
+# This should have worked but is not defined if env: is also there!
+          # envFrom:
+          #   - configMapRef:
+          #       name: metrics-configuration
 #
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
@@ -74,12 +64,41 @@ spec:
     pod:
       containers:
         - name: qmgr
-          envFrom:
-            - configMapRef:
-                name: metrics-configuration
-          ports:
-            - containerPort: 9157
-              protocol: TCP
+          env:
+            - name: MQSNOAUT
+              value: "yes"
+            - name: MQ_DEV
+              value: "true"
+            - name: MQ_ENABLE_METRICS
+              value: 'true'
+            - name: MQ_CONNAUTH_USE_HTP
+              value: "true"
+            - name: MQ_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mq02-admin-password
+                  key: admin-password
+            - name: IBMMQ_QUEUEMANAGER
+              value: 'MQ02' 
+            - name: IBMMQ_OBJECTS_QUEUES
+              value: '*,!SYSTEM.*,!AMQ.*' 
+            - name: IBMMQ_OBJECTS_CHANNELS
+              value: 'TO.*,SYSTEM.DEF.SVRCONN' 
+            - name: IBMMQ_OBJECTS_SUBSCRIPTIONS
+              value: '!$SYS*' 
+            - name: IBMMQ_OBJECTS_TOPICS
+              value: '!*' 
+            - name: IBMMQ_GLOBAL_USEPUBLICATIONS
+              value: false 
+            - name: IBMMQ_GLOBAL_USEOBJECTSTATUS
+              value: true 
+            - name: IBMMQ_GLOBAL_CONFIGURATIONFILE
+              value: '' 
+            - name: IBMMQ_GLOBAL_LOGLEVEL
+              value: INFO
+          # ports:
+          #   - containerPort: 9157
+          #     protocol: TCP
   terminationGracePeriodSeconds: 30
   tracing:
     agent: {}
