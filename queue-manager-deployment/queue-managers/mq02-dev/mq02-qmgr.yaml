@@ -59,6 +59,9 @@ spec:
     pod:
       containers:
         - name: qmgr
+          envFrom:
+            - configMapRef:
+                name: metrics-configuration
           env:
             - name: MQSNOAUT
               value: "yes"
@@ -71,9 +74,6 @@ spec:
                 secretKeyRef:
                   name: mq02-admin-password
                   key: admin-password
-          envFrom:
-            - configMapRef:
-                name: metrics-configuration
           ports:
             - containerPort: 9157
               protocol: TCP
