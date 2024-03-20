@@ -27,10 +27,10 @@ RUN ls --recursive /tmp/source
 
 
 # COPY --from=mq-metrics /go/src/github.com/ibm-messaging/mq-metric-samples/mq_prometheus.sh /opt/mqm/metrics
-# COPY queue-manager-custom-metrics/mq_prometheus.sh /opt/mqm/metrics
+COPY ./mq_prometheus.sh /opt/mqm/metrics
      
 
-# RUN chmod 770 /opt/mqm/metrics/*
+RUN chmod 770 /opt/mqm/metrics/*
 
 
 USER 1001
