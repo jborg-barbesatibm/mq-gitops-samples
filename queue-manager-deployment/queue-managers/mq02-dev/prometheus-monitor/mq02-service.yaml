@@ -8,7 +8,7 @@ metadata:
     prometheus.io/scrape: 'true'
   name: mq-prometheus
   labels:
-    app.kubernetes.io/name: mq02-ibm-mq-metrics
+    app.kubernetes.io/name: mq02-ibm-mq-metrics-mon
 spec:
   selector:
     app.kubernetes.io/instance: mq02-qm

@@ -14,5 +14,5 @@ spec:
     scheme: http
   selector:
     matchLabels:
-      app.kubernetes.io/name: mq02-ibm-mq-metrics
+      app.kubernetes.io/name: mq02-ibm-mq-metrics-mon
 
