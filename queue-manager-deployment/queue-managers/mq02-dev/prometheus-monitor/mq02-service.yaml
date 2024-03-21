@@ -1,3 +1,5 @@
+# Use a different name for the port, than the standard from MQ to avoid conflict
+#
 apiVersion: v1
 kind: Service
 metadata:
@@ -11,7 +13,7 @@ spec:
   selector:
     app.kubernetes.io/instance: mq02-qm
   ports:
-    - name: metrics
+    - name: metrics-mon
       protocol: TCP
       port: 9157
       targetPort: 9156

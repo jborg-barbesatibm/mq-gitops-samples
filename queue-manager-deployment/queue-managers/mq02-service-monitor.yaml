@@ -1,5 +1,5 @@
 #
-# metrics-port is definedf in service 'mq-prometheus'
+# metrics-mon-port is definedf in service 'mq-prometheus'
 #
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -10,7 +10,7 @@ metadata:
 spec:
   endpoints:
   - interval: 30s
-    port: metrics
+    port: metrics-mon
     scheme: http
   selector:
     matchLabels:
