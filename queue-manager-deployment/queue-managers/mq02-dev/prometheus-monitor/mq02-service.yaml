@@ -1,4 +1,6 @@
 # Use a different name for the port, than the standard for MQ to avoid conflict
+# This is the default label defined when the qmgr is created:
+#             app.kubernetes.io/instance: mq02
 #
 apiVersion: v1
 kind: Service
@@ -11,7 +13,7 @@ metadata:
     app.kubernetes.io/name: mq02-ibm-mq-metrics-mon
 spec:
   selector:
-    app.kubernetes.io/instance: mq02-qm
+    app.kubernetes.io/instance: mq02
   ports:
     - name: metrics-mon
       protocol: TCP
