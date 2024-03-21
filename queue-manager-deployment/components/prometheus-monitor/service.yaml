@@ -14,5 +14,5 @@ spec:
     - name: metrics
       protocol: TCP
       port: 9157
-      targetPort: 9157
+      targetPort: 9156
 
