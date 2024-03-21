@@ -1,4 +1,4 @@
-# Use a different name for the port, than the standard from MQ to avoid conflict
+# Use a different name for the port, than the standard for MQ to avoid conflict
 #
 apiVersion: v1
 kind: Service
